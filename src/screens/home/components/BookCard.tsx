@@ -14,15 +14,15 @@ export const BookCard = ({ book }: Props) => {
         {book?.imageLinks?.smallThumbnail ? (
           <Image
             src={book?.imageLinks?.smallThumbnail}
-            width='20rem'
-            height='20rem'
+            width='8rem'
+            height='10rem'
             alt={book.title}
           />
         ) : (
           <Image
             src={NoImageAvailable}
-            width='20rem'
-            height='20rem'
+            width='8rem'
+            height='10rem'
             alt={book.title}
           />
         )}
