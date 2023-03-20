@@ -38,12 +38,16 @@ class Books {
   searchBooks = async (config: QueryConfig) => {
     const data = await this.fetchBooks(config);
     data?.items && this.setBooks(data.items);
+
+    if (data?.totalItems === 0) {
+      this.setBooks([]);
+    }
   };
 
   loadMoreBooks = async (config: QueryConfig) => {
     const data = await this.fetchBooks(config);
     if (data?.items) {
-      this.books = [...this.books, ...data.items];
+      this.books.push(...data.items);
     }
   };
 
