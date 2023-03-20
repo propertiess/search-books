@@ -10,6 +10,8 @@ type Props = {
   book: VolumeInfo;
 };
 
+const MAX_LENGTH = 25;
+
 export const BookCard = observer(({ book }: Props) => {
   const { setActiveBook } = useBooks();
   const navigate = useNavigate();
@@ -43,9 +45,9 @@ export const BookCard = observer(({ book }: Props) => {
         )}
       </Flex>
       <Text my='md'>{book.categories?.[0]}</Text>
-      {book.title.length > 47 ? (
-        <Tooltip label={book.title}>
-          <Text component='h4'>{book.title.slice(0, 47) + '...'}</Text>
+      {book.title.length > MAX_LENGTH ? (
+        <Tooltip label={book.title} withinPortal={true}>
+          <Text component='h4'>{book.title.slice(0, MAX_LENGTH) + '...'}</Text>
         </Tooltip>
       ) : (
         <Text component='h4'>{book.title}</Text>

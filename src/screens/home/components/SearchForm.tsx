@@ -5,6 +5,7 @@ import { observer } from 'mobx-react-lite';
 
 import { useBookSearch } from '@/store/book-search';
 import { useBooks } from '@/store/books';
+import { showErrorNotification } from '@/utils/helpers/notifications';
 
 export const SearchForm = observer(() => {
   const { query, setQuery, category, orderBy } = useBookSearch();
@@ -14,6 +15,12 @@ export const SearchForm = observer(() => {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setQuery(value);
+
+    if (!value.trim()) {
+      showErrorNotification('Write book for search');
+      return;
+    }
+
     searchBooks({
       query: value,
       category,
