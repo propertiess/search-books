@@ -1,5 +1,11 @@
 import { Layout } from '@/layout/Layout';
 
+import { SearchForm } from './components/SearchForm';
+
 export const HomeScreen = () => {
-  return <Layout>HomeScreen</Layout>;
+  return (
+    <Layout>
+      <SearchForm />
+    </Layout>
+  );
 };

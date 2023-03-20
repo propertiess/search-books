@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { Footer, Header, Text, Title } from '@mantine/core';
+import { Container, Footer, Header, Text, Title } from '@mantine/core';
 
 type Props = PropsWithChildren;
 
@@ -11,7 +11,9 @@ export const Layout = ({ children }: Props) => {
           Search for books
         </Title>
       </Header>
-      <main>{children}</main>
+      <main>
+        <Container>{children}</Container>
+      </main>
       <Footer height='auto' p='sm'>
         <Text weight={500} className='text-center'>
           &copy; 2023
