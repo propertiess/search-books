@@ -1,0 +1,11 @@
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  @apply flex flex-col;
+  height: 100dvh;
+}
+
+main {
+  @apply flex-grow;
+}
