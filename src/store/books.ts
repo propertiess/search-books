@@ -3,7 +3,10 @@ import { makeAutoObservable } from 'mobx';
 
 import { BookService, QueryConfig } from '@/services/book/book.service';
 import { Book, VolumeInfo } from '@/types';
-import { showErrorNotification } from '@/utils/helpers/notifications';
+import {
+  showErrorNotification,
+  showWarningNotification
+} from '@/utils/helpers/notifications';
 
 class Books {
   books: Book[] = [];
@@ -41,6 +44,7 @@ class Books {
 
     if (data?.totalItems === 0) {
       this.setBooks([]);
+      showWarningNotification('Books not found! Try search another way');
     }
   };
 

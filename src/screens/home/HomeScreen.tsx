@@ -26,7 +26,7 @@ export const HomeScreen = observer(() => {
       <SearchForm />
       <BookSelectors />
       {!!totalLength && (
-        <Text className='text-center font-medium'>
+        <Text className='mt-2 text-center font-medium'>
           {totalLength} book(s) found
         </Text>
       )}

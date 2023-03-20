@@ -11,3 +11,15 @@ export const showErrorNotification = (message: string) => {
     })
   });
 };
+
+export const showWarningNotification = (message: string) => {
+  showNotification({
+    title: 'Warning',
+    message,
+    styles: () => ({
+      root: {
+        '&::before': { backgroundColor: 'orange' }
+      }
+    })
+  });
+};
