@@ -3,7 +3,7 @@ import { Card, Flex, Image, Text, Tooltip } from '@mantine/core';
 import { observer } from 'mobx-react-lite';
 
 import NoImageAvailable from '@/assets/no-image-available.png';
-import { useBooks } from '@/store/books';
+import { useBooksStore } from '@/store/books';
 import { VolumeInfo } from '@/types';
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 const MAX_LENGTH = 25;
 
 export const BookCard = observer(({ book }: Props) => {
-  const { setActiveBook } = useBooks();
+  const { setActiveBook } = useBooksStore();
   const navigate = useNavigate();
 
   const onClickHandler = () => {

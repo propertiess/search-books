@@ -25,4 +25,4 @@ class BookSearch {
 }
 
 const store = new BookSearch();
-export const useBookSearch = () => store;
+export const useBookSearchStore = () => store;

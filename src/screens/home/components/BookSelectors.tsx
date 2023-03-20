@@ -1,12 +1,12 @@
 import { Group, Select } from '@mantine/core';
 import { observer } from 'mobx-react-lite';
 
-import { useBookSearch } from '@/store/book-search';
+import { useBookSearchStore } from '@/store/book-search';
 import { CategoryEnum, SortEnum } from '@/types';
 import { CATEGORIES, SORTS } from '@/utils/consts';
 
 export const BookSelectors = observer(() => {
-  const { category, orderBy, setCategory, setOrderBy } = useBookSearch();
+  const { category, orderBy, setCategory, setOrderBy } = useBookSearchStore();
 
   return (
     <Group mt='md'>

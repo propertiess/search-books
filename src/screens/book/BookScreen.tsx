@@ -5,11 +5,14 @@ import { observer } from 'mobx-react-lite';
 
 import NoImageAvailable from '@/assets/no-image-available.png';
 import { A } from '@/components/A';
-import { useBooks } from '@/store/books';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
+import { useBooksStore } from '@/store/books';
 
 export const BookScreen = observer(() => {
   const navigate = useNavigate();
-  const { activeBook, setActiveBook } = useBooks();
+  const { activeBook, setActiveBook } = useBooksStore();
+
+  useScrollToTop();
 
   useEffect(() => {
     if (activeBook !== null) {

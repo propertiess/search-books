@@ -77,4 +77,4 @@ class Books {
 }
 
 const store = new Books();
-export const useBooks = () => store;
+export const useBooksStore = () => store;
