@@ -1,7 +1,6 @@
 import { Button, Text } from '@mantine/core';
 import { observer } from 'mobx-react-lite';
 
-import { Layout } from '@/layout/Layout';
 import { useBookSearch } from '@/store/book-search';
 import { useBooks } from '@/store/books';
 
@@ -23,7 +22,7 @@ export const HomeScreen = observer(() => {
   };
 
   return (
-    <Layout>
+    <>
       <SearchForm />
       <BookSelectors />
       {!!totalLength && (
@@ -44,6 +43,6 @@ export const HomeScreen = observer(() => {
           Load more
         </Button>
       )}
-    </Layout>
+    </>
   );
 });

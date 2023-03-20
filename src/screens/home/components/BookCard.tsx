@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Card, Flex, Image, Text, Tooltip } from '@mantine/core';
 
 import NoImageAvailable from '@/assets/no-image-available.png';
@@ -8,11 +9,19 @@ type Props = {
 };
 
 export const BookCard = ({ book }: Props) => {
+  const navigate = useNavigate();
+
+  const onClickHandler = () => {
+    navigate('/book-details');
+  };
+
   return (
     <Card className='h-full'>
       <Flex justify='center' p='sm'>
         {book?.imageLinks?.smallThumbnail ? (
           <Image
+            className='cursor-pointer'
+            onClick={onClickHandler}
             src={book?.imageLinks?.smallThumbnail}
             width='8rem'
             height='10rem'
@@ -20,8 +29,10 @@ export const BookCard = ({ book }: Props) => {
           />
         ) : (
           <Image
+            className='cursor-pointer'
+            onClick={onClickHandler}
             src={NoImageAvailable}
-            width='8rem'
+            width='10rem'
             height='10rem'
             alt={book.title}
           />
