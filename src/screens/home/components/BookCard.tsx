@@ -22,12 +22,10 @@ export const BookCard = observer(({ book }: Props) => {
   };
 
   return (
-    <Card className='h-full'>
+    <Card className='h-full cursor-pointer' onClick={onClickHandler}>
       <Flex justify='center' p='sm'>
         {book?.imageLinks?.smallThumbnail ? (
           <Image
-            className='cursor-pointer'
-            onClick={onClickHandler}
             src={book?.imageLinks?.smallThumbnail}
             width='8rem'
             height='10rem'
@@ -35,8 +33,6 @@ export const BookCard = observer(({ book }: Props) => {
           />
         ) : (
           <Image
-            className='cursor-pointer'
-            onClick={onClickHandler}
             src={NoImageAvailable}
             width='10rem'
             height='10rem'
