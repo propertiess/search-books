@@ -8,13 +8,13 @@ import { useBooks } from '@/store/books';
 
 export const SearchForm = observer(() => {
   const { query, setQuery, category, orderBy } = useBookSearch();
-  const { fetchBooks } = useBooks();
+  const { searchBooks } = useBooks();
   const [value, setValue] = useState(() => query);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setQuery(value);
-    fetchBooks({
+    searchBooks({
       query: value,
       category,
       orderBy: orderBy

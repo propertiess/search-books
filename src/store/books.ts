@@ -4,32 +4,46 @@ import { BookService, QueryConfig } from '@/services/book/book.service';
 import { Book } from '@/types';
 
 class Books {
-  books: Book[] | null = null;
+  books: Book[] = [];
   totalLength = 0;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  fetchBooks = async (config: QueryConfig) => {
+  private fetchBooks = async (config: QueryConfig) => {
     try {
       const data = await BookService.getByQuery(config);
-
-      console.log(data);
-      this.setBooks(data.items);
       this.setTotalLength(data.totalItems);
+      return data;
     } catch (e) {
       console.error(e);
     }
   };
 
-  setBooks = (books: Book[] | null) => {
+  searchBooks = async (config: QueryConfig) => {
+    const data = await this.fetchBooks(config);
+    data?.items && this.setBooks(data?.items);
+  };
+
+  loadMoreBooks = async (config: QueryConfig) => {
+    const data = await this.fetchBooks(config);
+    if (data?.items) {
+      this.books = [...this.books, ...data.items];
+    }
+  };
+
+  setBooks = (books: Book[]) => {
     this.books = books;
   };
 
   setTotalLength = (length: number) => {
     this.totalLength = length;
   };
+
+  get length() {
+    return this.books.length;
+  }
 }
 
 const store = new Books();

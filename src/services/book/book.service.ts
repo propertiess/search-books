@@ -6,10 +6,11 @@ export type QueryConfig = {
   query: string;
   category: CategoryEnum;
   orderBy: SortEnum;
+  startIndex?: number;
 };
 
 export const BookService = {
-  async getByQuery({ query, category, orderBy: orderBy }: QueryConfig) {
+  async getByQuery({ query, category, orderBy, startIndex }: QueryConfig) {
     const { data } = await instance.get<BooksResponse>('/volumes', {
       params: {
         q:
@@ -19,7 +20,8 @@ export const BookService = {
         maxResults: 30,
         orderBy,
         printType: 'books',
-        projection: 'full'
+        projection: 'full',
+        startIndex: startIndex ?? 0
       }
     });
     return data;
