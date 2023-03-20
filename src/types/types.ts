@@ -19,6 +19,7 @@ export type BooksResponse = {
 };
 
 export type Book = {
+  id: string;
   volumeInfo: VolumeInfo;
 };
 

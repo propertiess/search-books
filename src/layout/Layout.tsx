@@ -12,7 +12,7 @@ export const Layout = ({ children }: Props) => {
         </Title>
       </Header>
       <main>
-        <Container>{children}</Container>
+        <Container fluid={true}>{children}</Container>
       </main>
       <Footer height='auto' p='sm'>
         <Text weight={500} className='text-center'>

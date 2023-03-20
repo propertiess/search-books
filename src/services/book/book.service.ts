@@ -24,6 +24,7 @@ export const BookService = {
         startIndex: startIndex ?? 0
       }
     });
+
     return data;
   }
 };
