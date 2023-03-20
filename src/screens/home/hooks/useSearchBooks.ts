@@ -6,7 +6,7 @@ import { showErrorNotification } from '@/utils/helpers/notifications';
 
 export const useSearchBooks = () => {
   const { query, setQuery, category, orderBy } = useBookSearchStore();
-  const { searchBooks } = useBooksStore();
+  const { searchBooks, setBooks, setTotalLength } = useBooksStore();
 
   const [value, setValue] = useState(() => query);
 
@@ -19,6 +19,8 @@ export const useSearchBooks = () => {
       return;
     }
 
+    setBooks([]);
+    setTotalLength(0);
     searchBooks({
       query: value,
       category,
