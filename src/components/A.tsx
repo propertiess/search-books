@@ -4,11 +4,12 @@ import { Anchor } from '@mantine/core';
 
 type Props = PropsWithChildren & {
   href: string;
+  onClick?: () => void;
 };
 
-export const A = ({ href, children }: Props) => {
+export const A = ({ href, children, onClick }: Props) => {
   return (
-    <Anchor component={Link} to={href}>
+    <Anchor component={Link} to={href} onClick={onClick}>
       {children}
     </Anchor>
   );

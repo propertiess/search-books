@@ -1,11 +1,13 @@
 import { makeAutoObservable } from 'mobx';
 
 import { BookService, QueryConfig } from '@/services/book/book.service';
-import { Book } from '@/types';
+import { Book, VolumeInfo } from '@/types';
 
 class Books {
   books: Book[] = [];
+  activeBook: VolumeInfo | null = null;
   totalLength = 0;
+
   isLoading = false;
   isError: Error | null = null;
 
@@ -56,6 +58,10 @@ class Books {
 
   setIsError = (error: Error | null) => {
     this.isError = error;
+  };
+
+  setActiveBook = (book: VolumeInfo | null) => {
+    this.activeBook = book;
   };
 
   get length() {

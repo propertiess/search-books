@@ -1,17 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 import { Card, Flex, Image, Text, Tooltip } from '@mantine/core';
+import { observer } from 'mobx-react-lite';
 
 import NoImageAvailable from '@/assets/no-image-available.png';
+import { useBooks } from '@/store/books';
 import { VolumeInfo } from '@/types';
 
 type Props = {
   book: VolumeInfo;
 };
 
-export const BookCard = ({ book }: Props) => {
+export const BookCard = observer(({ book }: Props) => {
+  const { setActiveBook } = useBooks();
   const navigate = useNavigate();
 
   const onClickHandler = () => {
+    setActiveBook(book);
     navigate('/book-details');
   };
 
@@ -49,4 +53,4 @@ export const BookCard = ({ book }: Props) => {
       {book.authors && <Text>{book.authors.join(', ')}</Text>}
     </Card>
   );
-};
+});
